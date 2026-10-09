@@ -1,0 +1,10 @@
+{
+  "manifest_version": 3,
+  "name": "GryphCal M0 Spike",
+  "version": "0.0.1",
+  "description": "Throwaway probe: which CourseLink Valence API endpoints work from which extension context.",
+  "permissions": ["alarms", "storage", "unlimitedStorage", "scripting"],
+  "host_permissions": ["https://courselink.uoguelph.ca/*"],
+  "background": { "service_worker": "background.js" },
+  "action": { "default_title": "GryphCal M0 spike", "default_popup": "popup.html" }
+}

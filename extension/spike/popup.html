@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>GryphCal M0 spike</title>
+    <style>
+      body { font: 13px system-ui, sans-serif; margin: 12px; min-width: 620px; color: #1f2328; background: #fff; }
+      h1 { font-size: 15px; margin: 0 0 8px; }
+      h2 { font-size: 13px; margin: 14px 0 6px; }
+      fieldset { border: 1px solid #d0d7de; border-radius: 6px; margin: 0 0 8px; padding: 6px 10px; }
+      button { margin: 2px 4px 2px 0; padding: 4px 8px; cursor: pointer; }
+      button:disabled { cursor: progress; }
+      table { border-collapse: collapse; width: 100%; }
+      th, td { border: 1px solid #d0d7de; padding: 3px 6px; text-align: left; vertical-align: top; }
+      th { background: #f6f8fa; }
+      .pass { background: #dafbe1; }
+      .fail { background: #ffebe9; }
+      .muted { color: #656d76; }
+      details { margin: 4px 0; }
+      summary { cursor: pointer; }
+      #status { min-height: 1.4em; margin: 6px 0; }
+      code { font-size: 12px; }
+    </style>
+  </head>
+  <body>
+    <h1>GryphCal M0 spike — CourseLink API probe</h1>
+
+    <fieldset>
+      <legend>Before each run</legend>
+      I am currently:
+      <label><input type="radio" name="expected" value="signed_in" checked /> signed in to CourseLink</label>
+      <label><input type="radio" name="expected" value="signed_out" /> signed out</label>
+      <br />
+      <label>Course orgUnitId (optional, auto-picked if empty): <input id="orgUnitId" size="10" /></label>
+    </fieldset>
+
+    <button id="runTab">Run in CourseLink tab</button>
+    <button id="runSw">Run in service worker</button>
+    <button id="scheduleAlarm">Run from alarm in 1 min</button>
+    <label><input type="checkbox" id="armStartup" /> Run once on next browser start</label>
+    <div id="status" class="muted"></div>
+
+    <h2>Matrix (latest run per cell; pass = signed in → ok, signed out → expired)</h2>
+    <table id="matrix"></table>
+
+    <h2>Runs</h2>
+    <div id="runs"></div>
+
+    <p>
+      <button id="export">Export redacted JSON</button>
+      <button id="clear">Clear runs</button>
+      <button id="openTab">Open in tab</button>
+    </p>
+    <script src="popup.js"></script>
+  </body>
+</html>
